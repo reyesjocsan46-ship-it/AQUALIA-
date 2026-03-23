@@ -1836,6 +1836,11 @@ const origNext=DLG._next.bind(DLG);
 DLG._next=function(){ origNext(); if(isTouchDevice) btnAct.innerHTML='💬<br>SIGUIENTE'; };
 const origClose=DLG._close.bind(DLG);
 DLG._close=function(){ origClose(); if(isTouchDevice) btnAct.innerHTML='⚡<br>ACCIÓN'; };
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js')
+    .then(reg => console.log('Service Worker registrado', reg))
+    .catch(err => console.log('Error al registrar SW', err));
+}
 </script>
 </body>
 </html>
